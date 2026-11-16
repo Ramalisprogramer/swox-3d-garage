@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Swox 3D Garage</string>
+    <string name="header_title">SWOX 3D GARAGE</string>
+    <string name="header_subtitle">DİJİTAL ARAÇ PASAPORTU</string>
+    <string name="cd_profile_icon">Garaj Pasaport Profili</string>
+    <string name="cd_settings_icon">Ayarları Aç</string>
+    <string name="cd_close">Kapat</string>
+    <string name="cd_reset_camera">3D Kamerayı Sıfırla</string>
+    <string name="cd_vehicle_selector">Araç Modelini Seç</string>
+    <string name="cd_back_to_catalog">Kataloğa Dön</string>
+
+    <!-- Settings & Localization -->
+    <string name="settings_title">GARAJ AYARLARI</string>
+    <string name="settings_language_label">ARAYÜZ DİLİ</string>
+    <string name="settings_units_label">ÖLÇÜ BİRİMLERİ</string>
+    <string name="unit_metric">Metrik (km/sa · km · kg)</string>
+    <string name="unit_imperial">İmperial (mph · mil · lbs)</string>
+    <string name="lang_en">EN</string>
+    <string name="lang_az">AZ</string>
+    <string name="lang_tr">TR</string>
+    <string name="lang_en_name">English</string>
+    <string name="lang_az_name">Azərbaycanca</string>
+    <string name="lang_tr_name">Türkçe</string>
+
+    <!-- Profile Dialog -->
+    <string name="profile_passport_title">PASAPORT TELEMETRİSİ</string>
+    <string name="profile_owner_label">DENETÇİ ID</string>
+    <string name="profile_owner_value">SWX-MASTER-01</string>
+    <string name="profile_catalog_label">KATALOG FİLOSU</string>
+    <string name="profile_catalog_count">%1$d Doğrulanmış Araç</string>
+    <string name="profile_active_passport">AKTİF PASAPORT</string>
+
+    <!-- Vehicle Selector -->
+    <string name="selector_title">ARAÇ KATALOĞU</string>
+    <string name="selector_search_hint">Marka, model veya pasaport ara…</string>
+    <string name="category_all">Tümü (%1$d)</string>
+    <string name="category_scooter">Scooter</string>
+    <string name="category_ebike">E-Bisiklet</string>
+    <string name="category_bicycle">Bisiklet</string>
+    <string name="category_moto">Moto EV</string>
+    <string name="category_eskate">E-Kaykay</string>
+    <string name="category_onewheel">Tek Teker &amp; EUC</string>
+    <string name="category_micro">Mikro EV</string>
+    <string name="category_with_count">%1$s (%2$d)</string>
+    <string name="badge_mechanical_short">MEK</string>
+    <string name="selector_empty">Eşleşen araç profili bulunamadı.</string>
+
+    <!-- 3D Viewport Controls -->
+    <string name="mode_standard_pbr">Standart PBR</string>
+    <string name="mode_wireframe_xray">Siberpunk Tel Kafes X-Ray</string>
+    <string name="viewport_wireframe_fallback_badge">TEL KAFES SAHNE · GLB HAZIR</string>
+    <string name="viewport_decoded_stream_badge">3D METİN AKIŞI ÇÖZÜLDÜ</string>
+    <string name="viewport_decoded_glb_badge">ÇÖZÜLMÜŞ GLB AKTİF</string>
+    <string name="viewport_glb_active_badge">FİLAMENT GLB AKTİF</string>
+    <string name="viewport_hint_gestures">1 Parmak Döndür X/Y · 2 Parmak Yakınlaştır</string>
+    <string name="viewport_reset_label">İZO SIFIRLA</string>
+
+    <!-- 3D Hotspots -->
+    <string name="hotspot_battery">Batarya Paketi</string>
+    <string name="hotspot_motor">Arka Motor</string>
+    <string name="hotspot_controller">Gidon Kontrolcüsü</string>
+    <string name="hotspot_linked_toast">%1$s inceleniyor</string>
+
+    <!-- Datasheet Section Headers -->
+    <string name="datasheet_title">TEKNİK PASAPORT VERİ SAYFASI</string>
+    <string name="section_overview">PASAPORT GENEL BAKIŞ</string>
+    <string name="spec_vehicle_about">ARAÇ HAKKINDA</string>
+    <string name="section_core_specs">TEMEL ÖZELLİKLER</string>
+    <string name="section_physical_data">FİZİKSEL VERİLER</string>
+    <string name="section_security">GÜVENLİK</string>
+    <string name="section_firmware">YAZILIM</string>
+
+    <!-- Spec Card Labels -->
+    <string name="spec_motor_power">Nominal / Tepe Güç</string>
+    <string name="spec_battery_pack">Batarya Mimarisi</string>
+    <string name="spec_top_speed">Azami Hız</string>
+    <string name="spec_range">Maksimum Menzil</string>
+    <string name="spec_weight">Boş Ağırlık</string>
+    <string name="spec_tire_size">Tekerlek ve Lastik</string>
+    <string name="spec_frame">Şasi Malzemesi</string>
+    <string name="spec_water_rating">Sızdırmazlık Sınıfı</string>
+    <string name="spec_brakes">Fren Sistemi</string>
+    <string name="spec_suspension">Süspansiyon</string>
+    <string name="spec_lock_method">Kimlik Doğrulama</string>
+    <string name="spec_gps_alarm">GPS ve Alarm</string>
+    <string name="spec_controller_fw">Kontrolcü Yazılımı</string>
+    <string name="spec_bms_protocol">BMS ve Veri Yolu</string>
+
+    <!-- Formatted Unit Values & Enumerations -->
+    <string name="unit_kmh">km/sa</string>
+    <string name="unit_mph">mph</string>
+    <string name="unit_km">km</string>
+    <string name="unit_mi">mil</string>
+    <string name="unit_kg">kg</string>
+    <string name="unit_lbs">lbs</string>
+    <string name="lock_key_ignition">Fiziksel Anahtar + Voltmetre</string>
+    <string name="lock_nfc_pin">NFC Kart + Kokpit PIN</string>
+    <string name="lock_app_ble">Şifreli BLE Uygulama Kilidi</string>
+    <string name="lock_smart_fob">Yakınlık Akıllı Anahtar</string>
+    <string name="security_gps_alarm_both">Çift GPS + Hareket Sireni</string>
+    <string name="security_alarm_only">Hareket İmmobilizer Sireni</string>
+    <string name="security_gps_only">Aktif Hücresel GPS</string>
+    <string name="security_basic">Yalnızca Mekanik Kilit</string>
+    <string name="spec_regen_label">Rejen. Sv.%1$d</string>
+    <string name="spec_mechanical_power">0 W (Mekanik)</string>
+    <string name="spec_human_drivetrain">Pedallı Mekanik Aktarım</string>
+    <string name="spec_mechanical_no_battery">Bataryasız Mekanik</string>
+    <string name="spec_mechanical_no_regen">Mekanik Serbest Ruble</string>
+
+    <!-- Cloud Sync & Formatting -->
+    <string name="sync_status_cached">ÇEVRİMDIŞI ROOM ÖNBELLEĞİ</string>
+    <string name="sync_status_synced">BULUT + ROOM SENKRON</string>
+    <string name="sync_status_syncing">BULUT SENKRONİZE EDİLİYOR…</string>
+    <string name="sync_load_more">Daha Fazla Yükle (%1$d / %2$d)</string>
+    <string name="error_catalog_load_failed">Araç kataloğu yüklenemedi.</string>
+    <string name="error_cloud_write_auth_required">Bulut kataloğuna yazmak için kimliği doğrulanmış oturum gereklidir.</string>
+    <string name="format_decimal_0">%.0f</string>
+    <string name="format_decimal_1">%.1f</string>
+    <string name="format_unit_value">%1$s %2$s</string>
+    <string name="format_motor_watts">%1$d W</string>
+    <string name="format_watts_compact">%1$dW</string>
+    <string name="format_peak_watts">Tepe %1$d W</string>
+    <string name="format_battery_pack">%1$dV %2$sAh</string>
+    <string name="format_watt_hours">%1$d Wh</string>
+    <string name="format_brand_passport">%1$s · %2$s</string>
+    <string name="format_vehicle_meta">%1$s · %2$s · %3$s</string>
+    <string name="format_overview_fallback">%1$s %2$s (%3$d) — %4$s, %5$s.</string>
+    <string name="format_render_mode_pill">[ %1$s ]</string>
+</resources>

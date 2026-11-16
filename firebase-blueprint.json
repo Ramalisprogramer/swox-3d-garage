@@ -1,0 +1,198 @@
+{
+  "entities": {
+    "Vehicle": {
+      "title": "Vehicle",
+      "description": "Digital passport and 3D telemetry profile for an electric scooter, e-bike, electric motorcycle, or micro-EV.",
+      "type": "object",
+      "properties": {
+        "ownerId": {
+          "type": "string",
+          "description": "Authenticated creator UID enforcing multi-user ownership isolation."
+        },
+        "isPublic": {
+          "type": "boolean",
+          "description": "Whether the vehicle profile is published to the shared EV catalog."
+        },
+        "name": {
+          "type": "string",
+          "description": "Display model name (e.g. Kugoo M4 Pro)."
+        },
+        "brand": {
+          "type": "string",
+          "description": "Manufacturer or brand name."
+        },
+        "featured": {
+          "type": "boolean",
+          "description": "Whether the vehicle is highlighted as a primary featured model."
+        },
+        "vehicleClass": {
+          "type": "string",
+          "enum": ["SCOOTER", "E_BIKE", "MOTO", "MICRO_EV"],
+          "description": "Chassis archetype used for category filtering and 3D rig selection."
+        },
+        "passportCode": {
+          "type": "string",
+          "description": "Unique digital passport identifier."
+        },
+        "releaseYear": {
+          "type": "integer",
+          "description": "Model release year."
+        },
+        "modelAssetPath": {
+          "type": "string",
+          "description": "Relative asset path for optional bundled GLB 3D model."
+        },
+        "motorWatts": {
+          "type": "integer",
+          "description": "Nominal rated motor power in watts."
+        },
+        "peakWatts": {
+          "type": "integer",
+          "description": "Peak motor output in watts."
+        },
+        "batteryVoltage": {
+          "type": "integer",
+          "description": "Nominal battery pack voltage."
+        },
+        "batteryCapacityAh": {
+          "type": "number",
+          "description": "Battery capacity in ampere-hours."
+        },
+        "topSpeedKmh": {
+          "type": "number",
+          "description": "Maximum rated speed in km/h."
+        },
+        "rangeKm": {
+          "type": "number",
+          "description": "Maximum estimated range in km."
+        },
+        "weightKg": {
+          "type": "number",
+          "description": "Curb weight in kilograms."
+        },
+        "tireSize": {
+          "type": "string",
+          "description": "Wheel and tire specification."
+        },
+        "frameMaterial": {
+          "type": "string",
+          "description": "Chassis material."
+        },
+        "ipRating": {
+          "type": "string",
+          "description": "Ingress protection rating."
+        },
+        "suspension": {
+          "type": "string",
+          "description": "Suspension configuration."
+        },
+        "brakeSystem": {
+          "type": "string",
+          "description": "Braking hardware specification."
+        },
+        "hasNfcImmobilizer": {
+          "type": "boolean",
+          "description": "NFC immobilizer support flag."
+        },
+        "hasGpsTracker": {
+          "type": "boolean",
+          "description": "Cellular/GPS tracking support flag."
+        },
+        "hasAlarmSystem": {
+          "type": "boolean",
+          "description": "Motion alarm siren support flag."
+        },
+        "lockMethod": {
+          "type": "string",
+          "enum": ["KEY_IGNITION", "NFC_PIN", "APP_BLE", "SMART_FOB"],
+          "description": "Authentication lock method."
+        },
+        "controllerVersion": {
+          "type": "string",
+          "description": "Motor controller firmware version."
+        },
+        "bmsVersion": {
+          "type": "string",
+          "description": "Battery management system firmware version."
+        },
+        "protocol": {
+          "type": "string",
+          "description": "Vehicle telemetry bus protocol."
+        },
+        "regenLevels": {
+          "type": "integer",
+          "description": "Number of regenerative braking levels."
+        },
+        "batteryHotspotX": { "type": "number" },
+        "batteryHotspotY": { "type": "number" },
+        "batteryHotspotZ": { "type": "number" },
+        "motorHotspotX": { "type": "number" },
+        "motorHotspotY": { "type": "number" },
+        "motorHotspotZ": { "type": "number" },
+        "controllerHotspotX": { "type": "number" },
+        "controllerHotspotY": { "type": "number" },
+        "controllerHotspotZ": { "type": "number" },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server creation timestamp written via FieldValue.serverTimestamp()."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server update timestamp written via FieldValue.serverTimestamp()."
+        }
+      },
+      "required": [
+        "ownerId",
+        "isPublic",
+        "name",
+        "brand",
+        "featured",
+        "vehicleClass",
+        "passportCode",
+        "releaseYear",
+        "modelAssetPath",
+        "motorWatts",
+        "peakWatts",
+        "batteryVoltage",
+        "batteryCapacityAh",
+        "topSpeedKmh",
+        "rangeKm",
+        "weightKg",
+        "tireSize",
+        "frameMaterial",
+        "ipRating",
+        "suspension",
+        "brakeSystem",
+        "hasNfcImmobilizer",
+        "hasGpsTracker",
+        "hasAlarmSystem",
+        "lockMethod",
+        "controllerVersion",
+        "bmsVersion",
+        "protocol",
+        "regenLevels",
+        "batteryHotspotX",
+        "batteryHotspotY",
+        "batteryHotspotZ",
+        "motorHotspotX",
+        "motorHotspotY",
+        "motorHotspotZ",
+        "controllerHotspotX",
+        "controllerHotspotY",
+        "controllerHotspotZ",
+        "createdAt",
+        "updatedAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/vehicles/{vehicleId}": {
+      "schema": {
+        "$ref": "#/entities/Vehicle"
+      },
+      "description": "Scalable collection of EV digital passport profiles supporting 1000+ models synced offline-first into Room."
+    }
+  }
+}

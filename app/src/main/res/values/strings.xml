@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Swox 3D Garage</string>
+    <string name="header_title">SWOX 3D GARAGE</string>
+    <string name="header_subtitle">DIGITAL VEHICLE PASSPORT</string>
+    <string name="cd_profile_icon">Garage Passport Profile</string>
+    <string name="cd_settings_icon">Open Settings</string>
+    <string name="cd_close">Close</string>
+    <string name="cd_reset_camera">Reset 3D Camera</string>
+    <string name="cd_vehicle_selector">Select Vehicle Model</string>
+    <string name="cd_back_to_catalog">Back to Catalog</string>
+
+    <!-- Settings & Localization -->
+    <string name="settings_title">GARAGE SETTINGS</string>
+    <string name="settings_language_label">INTERFACE LANGUAGE</string>
+    <string name="settings_units_label">MEASUREMENT UNITS</string>
+    <string name="unit_metric">Metric (km/h · km · kg)</string>
+    <string name="unit_imperial">Imperial (mph · mi · lbs)</string>
+    <string name="lang_en">EN</string>
+    <string name="lang_az">AZ</string>
+    <string name="lang_tr">TR</string>
+    <string name="lang_en_name">English</string>
+    <string name="lang_az_name">Azərbaycanca</string>
+    <string name="lang_tr_name">Türkçe</string>
+
+    <!-- Profile Dialog -->
+    <string name="profile_passport_title">PASSPORT TELEMETRY</string>
+    <string name="profile_owner_label">INSPECTOR ID</string>
+    <string name="profile_owner_value">SWX-MASTER-01</string>
+    <string name="profile_catalog_label">CATALOG FLEET</string>
+    <string name="profile_catalog_count">%1$d Verified Rideables</string>
+    <string name="profile_active_passport">ACTIVE PASSPORT</string>
+
+    <!-- Vehicle Selector -->
+    <string name="selector_title">RIDEABLE CATALOG</string>
+    <string name="selector_search_hint">Search brand, model, or passport…</string>
+    <string name="category_all">All (%1$d)</string>
+    <string name="category_scooter">Scooters</string>
+    <string name="category_ebike">E-Bikes</string>
+    <string name="category_bicycle">Bicycles</string>
+    <string name="category_moto">Moto EV</string>
+    <string name="category_eskate">E-Skates</string>
+    <string name="category_onewheel">Onewheels &amp; EUCs</string>
+    <string name="category_micro">Micro EV</string>
+    <string name="category_with_count">%1$s (%2$d)</string>
+    <string name="badge_mechanical_short">MECH</string>
+    <string name="selector_empty">No matching rideable profiles found.</string>
+
+    <!-- 3D Viewport Controls -->
+    <string name="mode_standard_pbr">Standard PBR</string>
+    <string name="mode_wireframe_xray">Cyberpunk Wireframe X-Ray</string>
+    <string name="viewport_wireframe_fallback_badge">WIREFRAME STAGE · GLB READY</string>
+    <string name="viewport_decoded_stream_badge">DECODED 3D TEXT STREAM</string>
+    <string name="viewport_decoded_glb_badge">DECODED GLB ACTIVE</string>
+    <string name="viewport_glb_active_badge">FILAMENT GLB ACTIVE</string>
+    <string name="viewport_hint_gestures">1-Finger Orbit X/Y · 2-Finger Pinch Zoom</string>
+    <string name="viewport_reset_label">ISO RESET</string>
+
+    <!-- 3D Hotspots -->
+    <string name="hotspot_battery">Battery Pack</string>
+    <string name="hotspot_motor">Rear Motor</string>
+    <string name="hotspot_controller">Stem Controller</string>
+    <string name="hotspot_linked_toast">Inspecting %1$s</string>
+
+    <!-- Datasheet Section Headers -->
+    <string name="datasheet_title">TECHNICAL PASSPORT DATASHEET</string>
+    <string name="section_overview">PASSPORT OVERVIEW</string>
+    <string name="spec_vehicle_about">ABOUT THIS RIDEABLE</string>
+    <string name="section_core_specs">CORE SPECS</string>
+    <string name="section_physical_data">PHYSICAL DATA</string>
+    <string name="section_security">SECURITY</string>
+    <string name="section_firmware">FIRMWARE</string>
+
+    <!-- Spec Card Labels -->
+    <string name="spec_motor_power">Rated / Peak Motor</string>
+    <string name="spec_battery_pack">Battery Architecture</string>
+    <string name="spec_top_speed">Top Speed</string>
+    <string name="spec_range">Max Range</string>
+    <string name="spec_weight">Curb Weight</string>
+    <string name="spec_tire_size">Wheel &amp; Tire</string>
+    <string name="spec_frame">Chassis Material</string>
+    <string name="spec_water_rating">Ingress Protection</string>
+    <string name="spec_brakes">Braking System</string>
+    <string name="spec_suspension">Suspension</string>
+    <string name="spec_lock_method">Authentication</string>
+    <string name="spec_gps_alarm">GPS &amp; Alarm</string>
+    <string name="spec_controller_fw">Controller Firmware</string>
+    <string name="spec_bms_protocol">BMS &amp; Bus Protocol</string>
+
+    <!-- Formatted Unit Values & Enumerations -->
+    <string name="unit_kmh">km/h</string>
+    <string name="unit_mph">mph</string>
+    <string name="unit_km">km</string>
+    <string name="unit_mi">mi</string>
+    <string name="unit_kg">kg</string>
+    <string name="unit_lbs">lbs</string>
+    <string name="lock_key_ignition">Physical Key + Voltmeter</string>
+    <string name="lock_nfc_pin">NFC Tag + Cockpit PIN</string>
+    <string name="lock_app_ble">Encrypted BLE App Lock</string>
+    <string name="lock_smart_fob">Proximity Smart Keyfob</string>
+    <string name="security_gps_alarm_both">Dual GPS + Motion Siren</string>
+    <string name="security_alarm_only">Motion Immobilizer Siren</string>
+    <string name="security_gps_only">Active Cellular GPS</string>
+    <string name="security_basic">Mechanical Lock Only</string>
+    <string name="spec_regen_label">Regen Lv.%1$d</string>
+    <string name="spec_mechanical_power">0 W (Mechanical)</string>
+    <string name="spec_human_drivetrain">Human Pedal Drivetrain</string>
+    <string name="spec_mechanical_no_battery">No Battery Pack</string>
+    <string name="spec_mechanical_no_regen">Mechanical Freewheel</string>
+
+    <!-- Cloud Sync & Formatting -->
+    <string name="sync_status_cached">OFFLINE ROOM CACHE</string>
+    <string name="sync_status_synced">CLOUD + ROOM SYNCED</string>
+    <string name="sync_status_syncing">SYNCING CLOUD…</string>
+    <string name="sync_load_more">Load More (%1$d / %2$d)</string>
+    <string name="error_catalog_load_failed">Failed to load vehicle catalog.</string>
+    <string name="error_cloud_write_auth_required">Cloud catalog writes require an authenticated publisher session.</string>
+    <string name="format_decimal_0">%.0f</string>
+    <string name="format_decimal_1">%.1f</string>
+    <string name="format_unit_value">%1$s %2$s</string>
+    <string name="format_motor_watts">%1$d W</string>
+    <string name="format_watts_compact">%1$dW</string>
+    <string name="format_peak_watts">Peak %1$d W</string>
+    <string name="format_battery_pack">%1$dV %2$sAh</string>
+    <string name="format_watt_hours">%1$d Wh</string>
+    <string name="format_brand_passport">%1$s · %2$s</string>
+    <string name="format_vehicle_meta">%1$s · %2$s · %3$s</string>
+    <string name="format_overview_fallback">%1$s %2$s (%3$d) — %4$s, %5$s.</string>
+    <string name="format_render_mode_pill">[ %1$s ]</string>
+</resources>

@@ -1,0 +1,153 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Global Safety Net: default deny everything
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isValidCategoryCollection(collectionName) {
+      return collectionName in [
+        'E-Scooters',
+        'E-Bikes',
+        'Bicycles',
+        'Moto EV',
+        'E-Skates',
+        'Onewheels',
+        'Micro EV'
+      ];
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() >= 1 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_.\\- ]+$');
+    }
+
+    function isValidVehicleClass(value) {
+      return value in ['SCOOTER', 'E_BIKE', 'BICYCLE', 'MOTO', 'E_SKATE', 'ONEWHEEL', 'MICRO_EV'];
+    }
+
+    function isValidLockMethod(value) {
+      return value in ['KEY_IGNITION', 'NFC_PIN', 'APP_BLE', 'SMART_FOB'];
+    }
+
+    function isValidVehicle(data) {
+      return data.ownerId is string && data.ownerId.size() >= 1 && data.ownerId.size() <= 128 &&
+             data.isPublic is bool &&
+             data.name is string && data.name.size() >= 1 && data.name.size() <= 80 &&
+             data.brand is string && data.brand.size() >= 1 && data.brand.size() <= 60 &&
+             data.vehicleClass is string && isValidVehicleClass(data.vehicleClass) &&
+             data.passportCode is string && data.passportCode.size() >= 3 && data.passportCode.size() <= 40 &&
+             data.releaseYear is int && data.releaseYear >= 1980 && data.releaseYear <= 2035 &&
+             data.modelAssetPath is string && data.modelAssetPath.size() <= 200 &&
+             data.motorWatts is int && data.motorWatts >= 0 && data.motorWatts <= 200000 &&
+             data.peakWatts is int && data.peakWatts >= 0 && data.peakWatts <= 400000 &&
+             data.batteryVoltage is int && data.batteryVoltage >= 0 && data.batteryVoltage <= 1000 &&
+             data.batteryCapacityAh is number && data.batteryCapacityAh >= 0 && data.batteryCapacityAh <= 2000 &&
+             data.topSpeedKmh is number && data.topSpeedKmh > 0 && data.topSpeedKmh <= 400 &&
+             data.rangeKm is number && data.rangeKm >= 0 && data.rangeKm <= 2000 &&
+             data.weightKg is number && data.weightKg > 0 && data.weightKg <= 5000 &&
+             data.tireSize is string && data.tireSize.size() >= 1 && data.tireSize.size() <= 80 &&
+             data.frameMaterial is string && data.frameMaterial.size() >= 1 && data.frameMaterial.size() <= 80 &&
+             data.ipRating is string && data.ipRating.size() >= 2 && data.ipRating.size() <= 20 &&
+             data.suspension is string && data.suspension.size() >= 1 && data.suspension.size() <= 80 &&
+             data.brakeSystem is string && data.brakeSystem.size() >= 1 && data.brakeSystem.size() <= 80 &&
+             data.hasNfcImmobilizer is bool &&
+             data.hasGpsTracker is bool &&
+             data.hasAlarmSystem is bool &&
+             data.lockMethod is string && isValidLockMethod(data.lockMethod) &&
+             data.controllerVersion is string && data.controllerVersion.size() >= 1 && data.controllerVersion.size() <= 60 &&
+             data.bmsVersion is string && data.bmsVersion.size() >= 1 && data.bmsVersion.size() <= 60 &&
+             data.protocol is string && data.protocol.size() >= 1 && data.protocol.size() <= 60 &&
+             data.regenLevels is int && data.regenLevels >= 0 && data.regenLevels <= 10 &&
+             data.batteryHotspotX is number &&
+             data.batteryHotspotY is number &&
+             data.batteryHotspotZ is number &&
+             data.motorHotspotX is number &&
+             data.motorHotspotY is number &&
+             data.motorHotspotZ is number &&
+             data.controllerHotspotX is number &&
+             data.controllerHotspotY is number &&
+             data.controllerHotspotZ is number &&
+             data['haqqında'] is string && data['haqqında'].size() >= 1 && data['haqqında'].size() <= 2000 &&
+             data['skutur 3D modeli'] is string && data['skutur 3D modeli'].size() <= 500000;
+    }
+
+    function allowedVehicleKeys() {
+      return [
+        'ownerId', 'isPublic', 'name', 'brand', 'vehicleClass',
+        'passportCode', 'releaseYear', 'modelAssetPath', 'motorWatts', 'peakWatts',
+        'batteryVoltage', 'batteryCapacityAh', 'topSpeedKmh', 'rangeKm', 'weightKg',
+        'tireSize', 'frameMaterial', 'ipRating', 'suspension', 'brakeSystem',
+        'hasNfcImmobilizer', 'hasGpsTracker', 'hasAlarmSystem', 'lockMethod',
+        'controllerVersion', 'bmsVersion', 'protocol', 'regenLevels',
+        'batteryHotspotX', 'batteryHotspotY', 'batteryHotspotZ',
+        'motorHotspotX', 'motorHotspotY', 'motorHotspotZ',
+        'controllerHotspotX', 'controllerHotspotY', 'controllerHotspotZ',
+        'haqqında', 'skutur 3D modeli',
+        'createdAt', 'updatedAt'
+      ];
+    }
+
+    // Category-organized Universal Rideables Collections: `[Category Name]/{vehicleId}`
+    match /{collectionName}/{vehicleId} {
+      // Login-free public catalog reads when isPublic == true; private profiles stay restricted to owner
+      allow get: if isValidCategoryCollection(collectionName) && isValidId(vehicleId) && resource.data.isPublic == true;
+      allow get: if isValidCategoryCollection(collectionName) && isSignedIn() && isValidId(vehicleId) && resource.data.ownerId == request.auth.uid;
+      allow list: if isValidCategoryCollection(collectionName) && resource.data.isPublic == true;
+      allow list: if isValidCategoryCollection(collectionName) && isSignedIn() && resource.data.ownerId == request.auth.uid;
+
+      // Create: strict schema + ownerId == request.auth.uid + server timestamps
+      allow create: if isValidCategoryCollection(collectionName) &&
+                       isSignedIn() &&
+                       isValidId(vehicleId) &&
+                       incoming().keys().hasAll(allowedVehicleKeys()) &&
+                       incoming().keys().hasOnly(allowedVehicleKeys()) &&
+                       incoming().ownerId == request.auth.uid &&
+                       incoming().createdAt is timestamp && incoming().createdAt <= request.time &&
+                       incoming().updatedAt is timestamp && incoming().updatedAt <= request.time &&
+                       isValidVehicle(incoming());
+
+      // Update: immutable ownerId & createdAt + action-scoped affectedKeys + server updatedAt
+      allow update: if isValidCategoryCollection(collectionName) &&
+                       isSignedIn() &&
+                       isValidId(vehicleId) &&
+                       existing().ownerId == request.auth.uid &&
+                       incoming().ownerId == existing().ownerId &&
+                       incoming().createdAt == existing().createdAt &&
+                       incoming().updatedAt is timestamp && incoming().updatedAt <= request.time &&
+                       isValidVehicle(incoming()) &&
+                       incoming().diff(existing()).affectedKeys().hasOnly([
+                         'isPublic', 'name', 'brand', 'vehicleClass',
+                         'passportCode', 'releaseYear', 'modelAssetPath', 'motorWatts', 'peakWatts',
+                         'batteryVoltage', 'batteryCapacityAh', 'topSpeedKmh', 'rangeKm', 'weightKg',
+                         'tireSize', 'frameMaterial', 'ipRating', 'suspension', 'brakeSystem',
+                         'hasNfcImmobilizer', 'hasGpsTracker', 'hasAlarmSystem', 'lockMethod',
+                         'controllerVersion', 'bmsVersion', 'protocol', 'regenLevels',
+                         'batteryHotspotX', 'batteryHotspotY', 'batteryHotspotZ',
+                         'motorHotspotX', 'motorHotspotY', 'motorHotspotZ',
+                         'controllerHotspotX', 'controllerHotspotY', 'controllerHotspotZ',
+                         'haqqında', 'skutur 3D modeli',
+                         'updatedAt'
+                       ]);
+
+      allow delete: if isValidCategoryCollection(collectionName) &&
+                       isSignedIn() &&
+                       isValidId(vehicleId) &&
+                       existing().ownerId == request.auth.uid;
+    }
+  }
+}

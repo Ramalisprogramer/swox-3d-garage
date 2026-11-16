@@ -1,0 +1,6 @@
+{
+  "name": "Swox 3D Garage",
+  "description": "Interactive 3D EV passport, model inspector, and multilingual technical datasheet.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
